@@ -1,30 +1,45 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
-    defaultConfig {
-        applicationId "com.wei.playground.androidplayground"
-        minSdkVersion 21
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+    compileSdkVersion 25//编译的目标android版本
+    buildToolsVersion "25.0.0"//编译的Tools版本
+    defaultConfig {//默认配置
+        applicationId "com.wei.playground.androidplayground"//包名
+        minSdkVersion 21//最低的SDK版本
+        targetSdkVersion 25//测试过的最该SDK版本
+        versionCode 1//版本号
+        versionName "1.0"//版本名
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+//    signingConfigs {//签名配置
+//        release {//发布版签名配置
+//            storeFile file("fk.keystore")//密钥文件路径
+//            storePassword "123"//密钥文件密码
+//            keyAlias "fk"//key别名
+//            keyPassword "123"//key密码
+//        }
+//        debug {//debug版签名配置
+//            storeFile file("fk.keystore")
+//            storePassword "123"
+//            keyAlias "fk"
+//            keyPassword "123"
+//        }
+//    }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled false//混淆关闭
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//指定混淆规则文件
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(dir: 'libs', include: ['*.jar'])//编译lib目录下的.jar文件
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
+//    compile project(':ImageLibrary')//编译附加的项目
+    compile 'com.android.support:appcompat-v7:25.3.1'//编译第三方开源库
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
